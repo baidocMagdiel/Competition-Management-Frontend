@@ -1,0 +1,15 @@
+.mat-toolbar {
+  background-image: linear-gradient(to right, #6f55c2 0%, #475eba 100%, #1c1c8d 100%);
+  color: #ffffff;
+}
+
+.mat-button, .mat-raised-button{
+  color: #f0fff3;
+}
+
+.example-fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+
+

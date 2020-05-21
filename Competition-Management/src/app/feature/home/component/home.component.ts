@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {CompetitionMock} from "../mock/competition.mock";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {CompetitionMock} from '../mock/competition.mock';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,8 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['name', 'place'];
   competitionDataSource = new MatTableDataSource([]);
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.competitionDataSource.data = CompetitionMock;
