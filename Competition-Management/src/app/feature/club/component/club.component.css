@@ -1,0 +1,19 @@
+.mat-toolbar {
+  background-image: linear-gradient(to right, #6f55c2 0%, #475eba 100%, #1c1c8d 100%);
+  color: #ffffff;
+  min-height:35px;
+  max-height:35px
+}
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+}
+.fill-space {
+  flex: 1 1 auto;
+}
+
+table {
+  width: 100%;
+}

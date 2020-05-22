@@ -1,23 +1,36 @@
-<mat-toolbar color='primary'>
-  <span>Karate4All</span>
-  <div class="example-button-row">
-    <a routerLink="/club">
-      <button mat-button>Club</button>
-    </a>
-  </div>
+<mat-toolbar>
+  <span class="fill-space">Karate4All</span>
 
-  <div class="example-button-row">
-    <a routerLink="/home">
-      <button mat-button>Profile</button>
-    </a>
-  </div>
+  <!-- Club button -->
+  <a routerLink="/club">
+    <button mat-button>Club</button>
+  </a>
 
-  <div class="example-button-container">
-    <a routerLink="/home">
-      <button mat-button>
-        <mat-icon>home</mat-icon>
-      </button>
-    </a>
-  </div>
+  <!-- Competitions management button -->
+  <a routerLink="/home">
+    <button mat-button>Competitions management</button>
+  </a>
+
+  <!-- Profile button -->
+  <a routerLink="/home">
+    <button mat-button>Profile</button>
+  </a>
+
+  <!-- Home button -->
+  <a routerLink="/home">
+    <button mat-button>
+      <mat-icon>home</mat-icon>
+    </button>
+  </a>
+
+  <!-- Login button -->
+  <button mat-button>Login</button>
+
+  <!-- Logout button -->
+  <button mat-button>Logout</button>
+
+  <!-- Sign in button -->
+  <button mat-button>Sign in</button>
+
 </mat-toolbar>
 
