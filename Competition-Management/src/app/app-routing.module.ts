@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 
 const routes: Routes = [
@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'club',
     loadChildren: () => import('./feature/club/club.module').then(m => m.ClubModule)
+  },
+  {
+    path: 'athlete',
+    loadChildren: () => import('./feature/athlete/athlete.module').then(m => m.AthleteModule)
   }];
 
 @NgModule({

@@ -7,8 +7,8 @@ export const CompetitionMock: Competition[] = [
     place: 'Bucuresti',
     federation: 'FRK',
     competitionStatus: 'ACTIVE',
-    startDate: '14.06.2020',
-    endDate: '16.06.2020',
+    startDate: new Date('6/15/15'),
+    endDate: new Date('6/15/15'),
     noOfCountries: 65,
     noOfEntries: 245
   },

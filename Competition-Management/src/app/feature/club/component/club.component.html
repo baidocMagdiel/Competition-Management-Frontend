@@ -34,9 +34,11 @@
     <ng-container matColumnDef="details">
       <th *matHeaderCellDef mat-header-cell> Details</th>
       <td *matCellDef="let element" mat-cell>
-        <button color="primary" mat-icon-button>
-          <mat-icon>menu</mat-icon>
-        </button>
+        <a routerLink="/athlete">
+          <button color="primary" mat-icon-button>
+            <mat-icon>menu</mat-icon>
+          </button>
+        </a>
       </td>
     </ng-container>
 

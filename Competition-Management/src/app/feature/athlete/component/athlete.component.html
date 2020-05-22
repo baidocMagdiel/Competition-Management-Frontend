@@ -1,0 +1,110 @@
+<div class="grid-container">
+
+  <div class="grid-item1">
+    <form class="example-form">
+      <mat-form-field>
+        <mat-label>Surname</mat-label>
+        <input matInput value={{athlete[0].surname}}>
+      </mat-form-field>
+
+      <mat-form-field class="tab">
+        <mat-label>First name</mat-label>
+        <input matInput value={{athlete[0].firstName}}>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput value={{athlete[0].email}}>
+      </mat-form-field>
+
+      <mat-form-field class="tab">
+        <mat-label>Birthday</mat-label>
+        <input matInput value={{athlete[0].birthday}}>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput value={{athlete[0].address}}>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <input matInput value={{athlete[0].gender}}>
+      </mat-form-field>
+
+      <mat-form-field class="tab">
+        <mat-label>Blood type</mat-label>
+        <input matInput value={{athlete[0].bloodType}}>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Dan degree</mat-label>
+        <input matInput value={{athlete[0].danDegree}}>
+      </mat-form-field>
+
+      <mat-form-field class="tab">
+        <mat-label>Weight</mat-label>
+        <input matInput value={{athlete[0].weight}}>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>World ranking</mat-label>
+        <input matInput value={{athlete[0].worldRanking}}>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="grid-item2">
+    <form>
+      <div class="table-wrapper">
+        <table [dataSource]="historyDataSource" class="mat-elevation-z8" mat-table>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="competition">
+            <th *matHeaderCellDef mat-header-cell> Competition</th>
+            <td *matCellDef="let element" mat-cell> {{element.firstName}} </td>
+          </ng-container>
+
+          <!-- Place Column -->
+          <ng-container matColumnDef="category">
+            <th *matHeaderCellDef mat-header-cell> Category</th>
+            <td *matCellDef="let element" mat-cell> {{element.surname}} </td>
+          </ng-container>
+
+          <!-- Place Column -->
+          <ng-container matColumnDef="rank">
+            <th *matHeaderCellDef mat-header-cell> Rank</th>
+            <td *matCellDef="let element" mat-cell> {{element.surname}} </td>
+          </ng-container>
+
+          <!-- Place Column -->
+          <ng-container matColumnDef="points">
+            <th *matHeaderCellDef mat-header-cell> Points</th>
+            <td *matCellDef="let element" mat-cell> {{element.surname}} </td>
+          </ng-container>
+
+          <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+        </table>
+      </div>
+    </form>
+  </div>
+
+  <div class="grid-item3">
+    <button color="primary" mat-raised-button>Update</button>
+  </div>
+
+  <div class="grid-item4">
+    <button color="primary" mat-raised-button>Add in competition</button>
+  </div>
+
+</div>
+
+
+
+

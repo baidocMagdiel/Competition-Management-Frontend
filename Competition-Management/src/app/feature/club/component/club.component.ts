@@ -3,7 +3,6 @@ import {ClubMock} from '../mock/club.mock';
 import {Club} from '../model/club';
 import {AthleteMock} from '../mock/athlete.mock';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-club',
@@ -15,7 +14,7 @@ export class ClubComponent implements OnInit {
   club: Club[];
   athleteDataSource = new MatTableDataSource([]);
 
-  constructor(public dialog: MatDialog) {
+  constructor() {
   }
 
   ngOnInit(): void {

@@ -1,9 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-import {CompetitionMock} from '../mock/competition.mock';
 import {MatSort} from '@angular/material/sort';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Competition} from '../model/competition';
+import {HomeService} from '../service/home.service';
+import {CompetitionMock} from '../mock/competition.mock';
 
 @Component({
   selector: 'app-home',
@@ -23,10 +24,15 @@ export class HomeComponent implements OnInit {
   expandedElement: Competition | null;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  constructor() {
+
+  constructor(private homeService: HomeService) {
   }
 
   ngOnInit(): void {
+
+    /*this.homeService.getall().subscribe((data: Competition[]) => {
+      console.log(data);
+    }); */
     this.competitionDataSource.data = CompetitionMock;
     this.competitionDataSource.sort = this.sort;
   }
