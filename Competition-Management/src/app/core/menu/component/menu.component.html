@@ -7,12 +7,13 @@
   </a>
 
   <!-- Competitions management button -->
-  <a routerLink="/home">
+  <a routerLink="/management">
     <button mat-button>Competitions management</button>
   </a>
 
   <!-- Profile button -->
-  <a routerLink="/home">
+
+  <a [routerLink]="['/profile', id]">
     <button mat-button>Profile</button>
   </a>
 
@@ -24,13 +25,16 @@
   </a>
 
   <!-- Login button -->
-  <button mat-button>Login</button>
+  <a routerLink="/login">
+    <button mat-button>Login</button>
+  </a>
 
   <!-- Logout button -->
   <button mat-button>Logout</button>
 
   <!-- Sign in button -->
-  <button mat-button>Sign in</button>
-
+  <a routerLink="/signin">
+    <button mat-button>Sign up</button>
+  </a>
 </mat-toolbar>
 

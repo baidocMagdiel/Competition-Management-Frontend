@@ -2,7 +2,7 @@ import {Athlete} from '../model/athlete';
 
 export const AthleteMock: Athlete[] = [
   {
-    id: 12,
+    personId: 12,
     address: 'Str. Lunga 5 Sibiu',
     surname: 'Ion',
     firstName: 'Popescu',
@@ -15,7 +15,7 @@ export const AthleteMock: Athlete[] = [
     worldRanking: 100
   },
   {
-    id: 13,
+    personId: 13,
     address: 'Str. Lunga 5 Sibiu',
     surname: 'Gica',
     firstName: 'Petrescu',
@@ -28,7 +28,22 @@ export const AthleteMock: Athlete[] = [
     worldRanking: 100
   },
   {
-    id: 14,
+    personId: 14,
+    address: 'Str. Viilor 12 Sibiu',
+    surname: 'Pop',
+    firstName: 'Mihail',
+    gender: 'Male',
+    birthday: '10.09.1998',
+    email: 'pop.mihai@gmail.com',
+    weight: 59.9,
+    bloodType: 'AB4',
+    danDegree: '1DAN',
+    worldRanking: 100
+  },
+
+  {
+    type: 'coach',
+    personId: 14,
     address: 'Str. Viilor 12 Sibiu',
     surname: 'Pop',
     firstName: 'Mihail',

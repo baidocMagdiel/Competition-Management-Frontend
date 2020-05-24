@@ -8,7 +8,7 @@ import {Competition} from '../model/competition';
 })
 export class HomeService {
 
-  private GET_ALL_COMPETITIONS = 'localhost:8080/competition/getall';
+  private GET_ALL_COMPETITIONS = 'http://localhost:8080/competition/getall/';
 
   constructor(private httpClient: HttpClient) {
   }

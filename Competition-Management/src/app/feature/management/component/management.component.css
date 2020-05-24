@@ -29,30 +29,37 @@ tr.example-detail-row {
   padding: 16px;
 }
 
-.tab {
-  padding-left: 16em;
+.fill-space {
+  flex: 1 1 auto;
 }
 
 .example-element-description-attribution {
   opacity: 0.5;
 }
 
-.Pending{
+.Pending {
   color: #e39a0a;
 }
 
-.Progress{
+.Progress {
   color: #2b8ce0;
 }
 
-.Open{
+.Open {
   color: #8e8a85;
 }
 
-.Completed{
+.Completed {
   color: #0a5a21;
 }
 
-.Cancelled{
+.Cancelled {
   color: #c41919;
+}
+
+.add_btn {
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+  color: #ffffff;
 }

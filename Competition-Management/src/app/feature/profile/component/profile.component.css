@@ -15,9 +15,8 @@ table {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 40% 60%;
-  grid-template-rows: 90% 10%;
-  margin-top: 25px;
+  grid-template-columns: 20% 80%;
+  margin-top: 40px;
   margin-left: 50px;
   margin-right: 50px;
 }
@@ -25,6 +24,7 @@ table {
 .grid-item1 {
   grid-column-start: 1;
   grid-column-end: 1;
+  text-align: justify;
 }
 
 .grid-item2 {
@@ -32,13 +32,7 @@ table {
   grid-column-end: 2;
 }
 
-.grid-item3 {
-  grid-column-start: 1;
-  grid-column-end: 1;
-}
-
-.grid-item4 {
-  text-align: center;
-  grid-column-start: 2;
-  grid-column-end: 2;
+.icon {
+  font-size: 200px;
+  color: #2b8ce0;
 }

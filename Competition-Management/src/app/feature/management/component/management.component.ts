@@ -1,14 +1,15 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import {Competition} from '../../home/model/competition';
 import {MatSort} from '@angular/material/sort';
+import {HomeService} from '../../home/service/home.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {Competition} from '../model/competition';
-import {HomeService} from '../service/home.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-management',
+  templateUrl: './management.component.html',
+  styleUrls: ['./management.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({height: '0px', minHeight: '0'})),
@@ -17,14 +18,17 @@ import {HomeService} from '../service/home.service';
     ]),
   ],
 })
-export class HomeComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'place', 'federation', 'competitionStatus'];
+export class ManagementComponent implements OnInit {
+  displayedColumns: string[] = ['name', 'place', 'federation', 'competitionStatus', 'edit', 'delete'];
   competitionDataSource = new MatTableDataSource([]);
   expandedElement: Competition | null;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  Pending = 'Pending';
+  Open = 'Open';
 
-  constructor(private homeService: HomeService) {
+  constructor(private homeService: HomeService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -41,4 +45,11 @@ export class HomeComponent implements OnInit {
     this.competitionDataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  delete(competitionId) {
+    alert('Se sterge competitia cu id-ul ' + competitionId);
+  }
+
+  openDialog(): void {
+
+  }
 }

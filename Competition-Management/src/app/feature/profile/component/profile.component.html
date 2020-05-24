@@ -1,0 +1,82 @@
+<div *ngIf="user">
+  <div class="grid-container">
+    <div class="grid-item1">
+      <mat-icon class="icon">person</mat-icon>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <input [readonly]="true" matInput value={{user.type|uppercase}}>
+      </mat-form-field>
+
+      <br>
+      <button color="primary" mat-flat-button>Update</button>
+    </div>
+
+    <div class=" grid-item2">
+      <form class="example-form">
+        <mat-form-field>
+          <mat-label>Surname</mat-label>
+          <input matInput value={{user.surname}}>
+        </mat-form-field>
+
+        <mat-form-field class="tab">
+          <mat-label>First name</mat-label>
+          <input matInput value={{user.firstName}}>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <mat-select [(ngModel)]="genderSelected" name="gender">
+            <mat-option *ngFor="let gender of genders" [value]="gender">
+              {{gender}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="tab">
+          <mat-label>Birthday</mat-label>
+          <input [formControl]="initialDate" [matDatepicker]="picker" matInput>
+          <mat-datepicker-toggle [for]="picker" matSuffix>
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field class="custom-address">
+          <mat-label>Address</mat-label>
+          <input matInput value={{user.address}}>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input [readonly]="true" matInput value={{user.email}}>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field>
+          <mat-label>Enter your password</mat-label>
+          <input [type]="hide1 ? 'password' : 'text'" matInput>
+          <button (click)="hide1 = !hide1" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1"
+                  mat-icon-button
+                  matSuffix>
+            <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field class="tab">
+          <mat-label>Confirm your password</mat-label>
+          <input [type]="hide2 ? 'password' : 'text'" matInput>
+          <button (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2"
+                  mat-icon-button
+                  matSuffix>
+            <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-export interface Athlete {
+export interface Person {
   type?: string;
   personId?: number;
   address?: string;

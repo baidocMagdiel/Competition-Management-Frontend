@@ -1,62 +1,64 @@
 <div class="grid-container">
 
   <div class="grid-item1">
-    <form class="example-form">
-      <mat-form-field>
-        <mat-label>Surname</mat-label>
-        <input matInput value={{athlete[0].surname}}>
-      </mat-form-field>
+    <div *ngIf="athlete">
+      <form class="example-form">
+        <mat-form-field>
+          <mat-label>Surname</mat-label>
+          <input matInput value={{athlete.surname}}>
+        </mat-form-field>
 
-      <mat-form-field class="tab">
-        <mat-label>First name</mat-label>
-        <input matInput value={{athlete[0].firstName}}>
-      </mat-form-field>
-      <br>
+        <mat-form-field class="tab">
+          <mat-label>First name</mat-label>
+          <input matInput value={{athlete.firstName}}>
+        </mat-form-field>
+        <br>
 
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput value={{athlete[0].email}}>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput value={{athlete.email}}>
+        </mat-form-field>
 
-      <mat-form-field class="tab">
-        <mat-label>Birthday</mat-label>
-        <input matInput value={{athlete[0].birthday}}>
-      </mat-form-field>
+        <mat-form-field class="tab">
+          <mat-label>Birthday</mat-label>
+          <input matInput value={{athlete.birthday|date}}>
+        </mat-form-field>
 
-      <br>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput value={{athlete[0].address}}>
-      </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput value={{athlete.address}}>
+        </mat-form-field>
 
-      <br>
-      <mat-form-field>
-        <mat-label>Gender</mat-label>
-        <input matInput value={{athlete[0].gender}}>
-      </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <input matInput value={{athlete.gender}}>
+        </mat-form-field>
 
-      <mat-form-field class="tab">
-        <mat-label>Blood type</mat-label>
-        <input matInput value={{athlete[0].bloodType}}>
-      </mat-form-field>
+        <mat-form-field class="tab">
+          <mat-label>Blood type</mat-label>
+          <input matInput value={{athlete.bloodType}}>
+        </mat-form-field>
 
-      <br>
-      <mat-form-field>
-        <mat-label>Dan degree</mat-label>
-        <input matInput value={{athlete[0].danDegree}}>
-      </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Dan degree</mat-label>
+          <input matInput value={{athlete.danDegree}}>
+        </mat-form-field>
 
-      <mat-form-field class="tab">
-        <mat-label>Weight</mat-label>
-        <input matInput value={{athlete[0].weight}}>
-      </mat-form-field>
+        <mat-form-field class="tab">
+          <mat-label>Weight</mat-label>
+          <input matInput value={{athlete.weight}}>
+        </mat-form-field>
 
-      <br>
-      <mat-form-field>
-        <mat-label>World ranking</mat-label>
-        <input matInput value={{athlete[0].worldRanking}}>
-      </mat-form-field>
-    </form>
+        <br>
+        <mat-form-field>
+          <mat-label>World ranking</mat-label>
+          <input matInput value={{athlete.worldRanking}}>
+        </mat-form-field>
+      </form>
+    </div>
   </div>
 
   <div class="grid-item2">
@@ -96,7 +98,7 @@
   </div>
 
   <div class="grid-item3">
-    <button color="primary" mat-raised-button>Update</button>
+    <button (click)="upate()" color="primary" mat-raised-button>Update</button>
   </div>
 
   <div class="grid-item4">

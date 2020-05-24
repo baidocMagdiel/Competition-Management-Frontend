@@ -1,0 +1,126 @@
+<div class="grid-container">
+
+  <div class="grid-item1">
+    <div *ngIf="competition">
+      <form class="example-form">
+        <mat-form-field>
+          <mat-label>Competition name</mat-label>
+          <input matInput value={{competition.name}}>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field>
+          <mat-label>Place</mat-label>
+          <input matInput value={{competition.place}}>
+        </mat-form-field>
+
+        <mat-form-field class="tab">
+          <mat-label>Federation</mat-label>
+          <input matInput value={{competition.federation}}>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field>
+          <mat-label>Start date</mat-label>
+          <input matInput value={{competition.startDate|date}}>
+        </mat-form-field>
+
+        <mat-form-field class="tab">
+          <mat-label>End date</mat-label>
+          <input matInput value={{competition.endDate|date}}>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field>
+          <mat-label>Last registration date</mat-label>
+          <input matInput value={{competition.lastRegistrationDate|date}}>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field>
+          <mat-label>Number of entries</mat-label>
+          <input matInput value={{competition.noOfEntries}}>
+        </mat-form-field>
+
+        <mat-form-field class="tab">
+          <mat-label>Number of countries</mat-label>
+          <input matInput value={{competition.noOfCountries}}>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field>
+          <mat-label>Competition status</mat-label>
+          <input matInput value={{competition.competitionStatus}}>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <div class="grid-item2">
+    <div class="mat-elevation-z8">
+      <table [dataSource]="categoryDataSource" mat-table>
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th *matHeaderCellDef mat-header-cell>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [aria-label]="checkboxLabel()"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td *matCellDef="let row" mat-cell>
+            <mat-checkbox (change)="$event ? selection.toggle(row) : null"
+                          (click)="$event.stopPropagation()"
+                          [aria-label]="checkboxLabel(row)"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- name Column -->
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef mat-header-cell> Category name</th>
+          <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+        </ng-container>
+
+        <!-- ageRange Column -->
+        <ng-container matColumnDef="ageRange">
+          <th *matHeaderCellDef mat-header-cell> Age range</th>
+          <td *matCellDef="let element" mat-cell> {{element.ageRange}} </td>
+        </ng-container>
+
+        <!-- weightRange Column -->
+        <ng-container matColumnDef="weightRange">
+          <th *matHeaderCellDef mat-header-cell> Weight range</th>
+          <td *matCellDef="let element" mat-cell> {{element.weightRange}} </td>
+        </ng-container>
+
+        <!-- noMembers Column -->
+        <ng-container matColumnDef="noMembers">
+          <th *matHeaderCellDef mat-header-cell> Number of team members</th>
+          <td *matCellDef="let element" mat-cell> {{element.noOfTeamMembers}} </td>
+        </ng-container>
+
+        <!-- noMatches Column -->
+        <ng-container matColumnDef="noMatches">
+          <th *matHeaderCellDef mat-header-cell> Number of matches</th>
+          <td *matCellDef="let element" mat-cell> {{element.noOfMatches}} </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr (click)="selection.toggle(row)" *matRowDef="let row; columns: displayedColumns;"
+            mat-row>
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5,10]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+  <div class="grid-item3">
+    <button (click)="upate()" color="primary" mat-raised-button>Update</button>
+  </div>
+</div>
+
+
+
+

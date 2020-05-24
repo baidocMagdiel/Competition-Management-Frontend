@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Athlete} from '../../club/model/athlete';
 import {AthleteMock} from '../../club/mock/athlete.mock';
 import {MatTableDataSource} from '@angular/material/table';
+import {ActivatedRoute} from '@angular/router';
+import {AthleteService} from '../service/athlete.service';
 
 @Component({
   selector: 'app-athlete',
@@ -11,15 +13,24 @@ import {MatTableDataSource} from '@angular/material/table';
 export class AthleteComponent implements OnInit {
 
   displayedColumns: string[] = ['competition', 'category', 'rank', 'points'];
-  athlete: Athlete[];
   historyDataSource = new MatTableDataSource([]);
+  athlete: Athlete;
 
-  constructor() {
+  constructor(private route: ActivatedRoute,
+              private athleteService: AthleteService) {
   }
 
   ngOnInit(): void {
-    this.athlete = AthleteMock;
     this.historyDataSource.data = AthleteMock;
+    this.route.paramMap.subscribe((params) => {
+
+      this.athleteService.getAthlete(params.get('id')).subscribe((data: Athlete) => {
+        this.athlete = data;
+      });
+    });
   }
 
+  upate(): void {
+    this.athleteService.updateAthlete(this.athlete).subscribe();
+  }
 }

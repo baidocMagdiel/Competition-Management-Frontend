@@ -1,20 +1,20 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 
-import {ClubRoutingModule} from './club-routing.module';
-import {ClubComponent} from './component/club.component';
+import {ManagementRoutingModule} from './management-routing.module';
+import {ManagementComponent} from './component/management.component';
 import {MaterialModule} from '../../material-module';
 import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [ClubComponent],
+  declarations: [ManagementComponent],
   imports: [
     CommonModule,
-    ClubRoutingModule,
+    ManagementRoutingModule,
     MaterialModule,
     FormsModule
   ]
 })
-export class ClubModule {
+export class ManagementModule {
 }

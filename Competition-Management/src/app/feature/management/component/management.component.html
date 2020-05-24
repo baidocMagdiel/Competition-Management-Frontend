@@ -1,7 +1,14 @@
-<mat-form-field>
+<mat-form-field class="fill-space">
   <mat-label>Search</mat-label>
   <input (keyup)="applyFilter($event)" matInput>
 </mat-form-field>
+
+
+<span class="add_btn">
+    <button (click)="openDialog()" mat-fab>
+      <mat-icon>add</mat-icon>
+    </button>
+</span>
 
 <div class="table-wrapper">
   <table [dataSource]="competitionDataSource" class="mat-elevation-z8" mat-table matSort multiTemplateDataRows>
@@ -57,6 +64,28 @@
       </td>
     </ng-container>
 
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <th *matHeaderCellDef mat-header-cell> Edit</th>
+      <td *matCellDef="let element" mat-cell>
+        <a [routerLink]="['/competition', element.competitionId]">
+          <button color="primary" mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </a>
+      </td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th *matHeaderCellDef mat-header-cell> Delete</th>
+      <td *matCellDef="let element" mat-cell>
+        <button (click)="delete(element.competitionId)" color="warn" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
     <!-- Animatie -->
     <ng-container matColumnDef="expandedDetail">
       <td *matCellDef="let element" [attr.colspan]="displayedColumns.length" mat-cell>
@@ -84,4 +113,5 @@
     <tr *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row" mat-row></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
 </div>
