@@ -1,5 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {AuthorizationGuard} from './core/authorization-guard/authorization.guard';
+import {PersonTypeEnum} from './shared/PersonTypeEnum';
 
 
 const routes: Routes = [
@@ -10,7 +12,11 @@ const routes: Routes = [
   },
   {
     path: 'club',
-    loadChildren: () => import('./feature/club/club.module').then(m => m.ClubModule)
+    loadChildren: () => import('./feature/club/club.module').then(m => m.ClubModule),
+    canActivateChild: [AuthorizationGuard],
+    data: {
+      role: PersonTypeEnum.COACH
+    }
   },
   {
     path: 'athlete/:id',

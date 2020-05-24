@@ -1,22 +1,6 @@
 <mat-toolbar>
   <span class="fill-space">Karate4All</span>
 
-  <!-- Club button -->
-  <a routerLink="/club">
-    <button mat-button>Club</button>
-  </a>
-
-  <!-- Competitions management button -->
-  <a routerLink="/management">
-    <button mat-button>Competitions management</button>
-  </a>
-
-  <!-- Profile button -->
-
-  <a [routerLink]="['/profile', id]">
-    <button mat-button>Profile</button>
-  </a>
-
   <!-- Home button -->
   <a routerLink="/home">
     <button mat-button>
@@ -24,17 +8,34 @@
     </button>
   </a>
 
+  <!-- Club button -->
+  <a *ngIf="sessionService.isCoach()" routerLink="/club">
+    <button mat-button>Club</button>
+  </a>
+
+  <!-- Competitions management button -->
+  <a *ngIf="sessionService.isManager()" routerLink="/management">
+    <button mat-button>Competitions management</button>
+  </a>
+
+  <!-- Profile button -->
+
+  <a *ngIf="sessionService.currentLoggedPerson" [routerLink]="['/profile', id] ">
+    <button mat-button>Profile</button>
+  </a>
+
   <!-- Login button -->
-  <a routerLink="/login">
+  <a *ngIf="!sessionService.currentLoggedPerson" routerLink="/login">
     <button mat-button>Login</button>
   </a>
 
   <!-- Logout button -->
-  <button mat-button>Logout</button>
+  <div *ngIf="sessionService.currentLoggedPerson">
+    <button mat-button>Logout</button>
+  </div>
 
   <!-- Sign in button -->
-  <a routerLink="/signin">
+  <a *ngIf="!sessionService.currentLoggedPerson" routerLink="/signin">
     <button mat-button>Sign up</button>
   </a>
 </mat-toolbar>
-

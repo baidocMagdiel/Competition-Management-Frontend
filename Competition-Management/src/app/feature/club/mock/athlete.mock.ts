@@ -54,5 +54,19 @@ export const AthleteMock: Athlete[] = [
     bloodType: 'AB4',
     danDegree: '1DAN',
     worldRanking: 100
+  },
+  {
+    type: 'manager',
+    personId: 150,
+    address: 'Str. Viilor 12 Sibiu',
+    surname: 'Pop',
+    firstName: 'Pop',
+    gender: 'Male',
+    birthday: '10.09.1998',
+    email: 'pop.mihai@gmail.com',
+    weight: 59.9,
+    bloodType: 'AB4',
+    danDegree: '1DAN',
+    worldRanking: 100
   }
 ];
