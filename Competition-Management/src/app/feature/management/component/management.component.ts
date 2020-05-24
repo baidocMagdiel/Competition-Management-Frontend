@@ -4,7 +4,9 @@ import {Competition} from '../../home/model/competition';
 import {MatSort} from '@angular/material/sort';
 import {HomeService} from '../../home/service/home.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {AddCompetitionDialogComponent} from './add-competition-dialog.component';
+import {CompetitionManagementService} from '../service/competition-management.service';
 
 @Component({
   selector: 'app-management',
@@ -22,19 +24,20 @@ export class ManagementComponent implements OnInit {
   displayedColumns: string[] = ['name', 'place', 'federation', 'competitionStatus', 'edit', 'delete'];
   competitionDataSource = new MatTableDataSource([]);
   expandedElement: Competition | null;
+  competitions: Competition[];
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-  Pending = 'Pending';
-  Open = 'Open';
 
   constructor(private homeService: HomeService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private competitionManagementService: CompetitionManagementService) {
   }
 
   ngOnInit(): void {
 
     this.homeService.getall().subscribe((data: Competition[]) => {
-      this.competitionDataSource.data = data;
+      this.competitions = data;
+      this.competitionDataSource.data =  this.competitions;
     });
 
     this.competitionDataSource.sort = this.sort;
@@ -50,6 +53,22 @@ export class ManagementComponent implements OnInit {
   }
 
   openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.disableClose = true;
+    dialogConfig.width = '500px';
+    dialogConfig.height = '700px';
 
+    const dialogRef = this.dialog.open(AddCompetitionDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe((newCompetition: Competition) => {
+      if (newCompetition){
+        this.competitionManagementService.createCompetition(newCompetition).subscribe(
+          (competition) => {
+            this.competitions = this.competitionManagementService.appendNewComponent(this.competitions, competition);
+            this.competitionDataSource.data = this.competitions;
+          }
+        );
+      }
+    });
   }
 }

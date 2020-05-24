@@ -1,0 +1,64 @@
+<mat-dialog-content [formGroup]="competitionForm">
+    <div class="example-form" >
+      <mat-form-field>
+        <mat-label>Competition name</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Place</mat-label>
+        <input matInput formControlName="place">
+      </mat-form-field>
+
+      <mat-form-field class="tab">
+        <mat-label>Federation</mat-label>
+        <input matInput formControlName="federation">
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Start date</mat-label>
+        <input matInput [matDatepicker]="myDatepicker" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker" ></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="tab">
+        <mat-label>End date</mat-label>
+        <input matInput [matDatepicker]="myDatepicker1" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker1" ></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker1></mat-datepicker>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Last registration date</mat-label>
+        <input matInput [matDatepicker]="myDatepicker2" formControlName="lastRegistrationDate">
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker2" ></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker2></mat-datepicker>
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Number of entries</mat-label>
+        <input matInput formControlName="noOfEntries">
+      </mat-form-field>
+
+      <mat-form-field class="tab">
+        <mat-label>Number of countries</mat-label>
+        <input matInput formControlName="noOfCountries">
+      </mat-form-field>
+
+      <br>
+      <mat-form-field>
+        <mat-label>Competition status</mat-label>
+        <input matInput formControlName="competitionStatus">
+      </mat-form-field>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="onSubmit()">Submit</button>
+  <button mat-raised-button (click)="onClose()">Cancel</button>
+</mat-dialog-actions>
