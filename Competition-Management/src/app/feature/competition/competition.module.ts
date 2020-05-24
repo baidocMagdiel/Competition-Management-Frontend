@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CompetitionRoutingModule } from './competition-routing.module';
 import { CompetitionComponent } from './component/competition.component';
 import {MaterialModule} from '../../material-module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import {MaterialModule} from '../../material-module';
   imports: [
     CommonModule,
     CompetitionRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class CompetitionModule { }

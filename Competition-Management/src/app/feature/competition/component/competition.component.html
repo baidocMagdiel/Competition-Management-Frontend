@@ -2,57 +2,63 @@
 
   <div class="grid-item1">
     <div *ngIf="competition">
-      <form class="example-form">
-        <mat-form-field>
-          <mat-label>Competition name</mat-label>
-          <input matInput value={{competition.name}}>
-        </mat-form-field>
+        <div class="example-form" [formGroup]="competitionForm">
+          <mat-form-field>
+            <mat-label>Competition name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
 
-        <br>
-        <mat-form-field>
-          <mat-label>Place</mat-label>
-          <input matInput value={{competition.place}}>
-        </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Place</mat-label>
+            <input matInput formControlName="place">
+          </mat-form-field>
 
-        <mat-form-field class="tab">
-          <mat-label>Federation</mat-label>
-          <input matInput value={{competition.federation}}>
-        </mat-form-field>
+          <mat-form-field class="tab">
+            <mat-label>Federation</mat-label>
+            <input matInput formControlName="federation">
+          </mat-form-field>
 
-        <br>
-        <mat-form-field>
-          <mat-label>Start date</mat-label>
-          <input matInput value={{competition.startDate|date}}>
-        </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Start date</mat-label>
+            <input matInput [matDatepicker]="myDatepicker" formControlName="startDate">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker" ></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker></mat-datepicker>
+          </mat-form-field>
 
-        <mat-form-field class="tab">
-          <mat-label>End date</mat-label>
-          <input matInput value={{competition.endDate|date}}>
-        </mat-form-field>
+          <mat-form-field class="tab">
+            <mat-label>End date</mat-label>
+            <input matInput [matDatepicker]="myDatepicker1" formControlName="endDate">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker1" ></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker1></mat-datepicker>
+          </mat-form-field>
 
-        <br>
-        <mat-form-field>
-          <mat-label>Last registration date</mat-label>
-          <input matInput value={{competition.lastRegistrationDate|date}}>
-        </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Last registration date</mat-label>
+            <input matInput [matDatepicker]="myDatepicker2" formControlName="lastRegistrationDate">
+            <mat-datepicker-toggle matSuffix [for]="myDatepicker2" ></mat-datepicker-toggle>
+            <mat-datepicker #myDatepicker2></mat-datepicker>
+          </mat-form-field>
 
-        <br>
-        <mat-form-field>
-          <mat-label>Number of entries</mat-label>
-          <input matInput value={{competition.noOfEntries}}>
-        </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Number of entries</mat-label>
+            <input matInput formControlName="noOfEntries">
+          </mat-form-field>
 
-        <mat-form-field class="tab">
-          <mat-label>Number of countries</mat-label>
-          <input matInput value={{competition.noOfCountries}}>
-        </mat-form-field>
+          <mat-form-field class="tab">
+            <mat-label>Number of countries</mat-label>
+            <input matInput formControlName="noOfCountries">
+          </mat-form-field>
 
-        <br>
-        <mat-form-field>
-          <mat-label>Competition status</mat-label>
-          <input matInput value={{competition.competitionStatus}}>
-        </mat-form-field>
-      </form>
+          <br>
+          <mat-form-field>
+            <mat-label>Competition status</mat-label>
+            <input matInput formControlName="competitionStatus">
+          </mat-form-field>
+        </div>
     </div>
   </div>
 
@@ -117,7 +123,7 @@
     </div>
   </div>
   <div class="grid-item3">
-    <button (click)="upate()" color="primary" mat-raised-button>Update</button>
+    <button (click)="update()" color="primary" mat-raised-button>Update</button>
   </div>
 </div>
 

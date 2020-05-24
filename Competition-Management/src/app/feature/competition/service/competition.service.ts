@@ -12,6 +12,7 @@ export class CompetitionService {
   private GET_COMPETITION = 'http://localhost:8080/competition/find/';
   private GET_CATEGORIES = 'http://localhost:8080/competition/getcategories/';
   private GET_ALL_CATEGORIES = 'http://localhost:8080/category/getall/';
+  private UPDATE_COMPETITION = 'http://localhost:8080/competition/update/';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,5 +30,9 @@ export class CompetitionService {
 
   public getAllCategory(): Observable<Category[]> {
     return this.httpClient.get<Category[]>(this.GET_ALL_CATEGORIES);
+  }
+
+  public updateCompetition(competition: Competition): Observable<Competition>{
+    return this.httpClient.post<Competition>(this.UPDATE_COMPETITION, competition);
   }
 }

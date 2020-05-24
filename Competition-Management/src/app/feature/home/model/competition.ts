@@ -1,3 +1,5 @@
+import {Category} from '../../competition/model/category';
+
 export interface Competition {
   competitionId?: number;
   name?: string;
@@ -9,5 +11,5 @@ export interface Competition {
   noOfEntries?: number;
   noOfCountries?: number;
   competitionStatus?: string;
-  categories?: string;
+  categories?: Category[];
 }

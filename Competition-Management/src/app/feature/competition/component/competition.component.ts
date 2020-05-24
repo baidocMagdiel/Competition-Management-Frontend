@@ -6,6 +6,7 @@ import {CompetitionService} from '../service/competition.service';
 import {Category} from '../model/category';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatPaginator} from '@angular/material/paginator';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-competition',
@@ -20,6 +21,18 @@ export class CompetitionComponent implements OnInit {
   categoryDataSource = new MatTableDataSource<Category>([]);
   selection = new SelectionModel<Category>(true, []);
 
+  competitionForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    place: new FormControl( ''),
+    federation: new FormControl(''),
+    startDate: new FormControl( new Date()),
+    endDate: new FormControl( new Date()),
+    lastRegistrationDate: new FormControl( new Date()),
+    noOfEntries: new FormControl(0),
+    noOfCountries: new FormControl(0),
+    competitionStatus: new FormControl(''),
+  });
+
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private route: ActivatedRoute,
@@ -31,17 +44,27 @@ export class CompetitionComponent implements OnInit {
 
     this.route.paramMap.subscribe((params) => {
 
-      this.competitionService.getCompetition(params.get('id')).subscribe((data: Competition) => {
-        this.competition = data;
+      this.competitionService.getCompetition(params.get('id')).subscribe((competition: Competition) => {
+        this.competition = competition;
+        this.competitionForm.patchValue(competition);
+        this.competitionForm.get(['startDate']).setValue(new Date(competition.startDate));
+        this.competitionForm.get(['endDate']).setValue(new Date(competition.endDate));
+        this.competitionForm.get(['lastRegistrationDate']).setValue(new Date(competition.lastRegistrationDate));
+       /*
+        competition.categories.forEach((category) => {
+          this.selection.select(category);
+        });
+        */
+        console.log(competition.categories);
       });
 
-      this.competitionService.getCategories(params.get('id')).subscribe((data: Category[]) => {
-        this.competitionCategories = data;
+      this.competitionService.getCategories(params.get('id')).subscribe((categories: Category[]) => {
+        this.competitionCategories = categories;
       });
     });
 
-    this.competitionService.getAllCategory().subscribe((data: Category[]) => {
-      this.categoryDataSource.data = data;
+    this.competitionService.getAllCategory().subscribe((categories: Category[]) => {
+      this.categoryDataSource.data = categories;
     });
   }
 
@@ -67,7 +90,22 @@ export class CompetitionComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
   }
 
-  upate() {
-
+  update() {
+    const competition: Competition = {
+      competitionId: this.competition.competitionId,
+      name: this.competitionForm.get(['name']).value,
+      place: this.competitionForm.get(['place']).value,
+      federation: this.competitionForm.get(['federation']).value,
+      startDate: this.competitionForm.get(['startDate']).value,
+      endDate: this.competitionForm.get(['endDate']).value,
+      lastRegistrationDate: this.competitionForm.get(['lastRegistrationDate']).value,
+      noOfEntries: this.competitionForm.get(['noOfEntries']).value,
+      noOfCountries: this.competitionForm.get(['noOfCountries']).value,
+      competitionStatus: this.competitionForm.get(['competitionStatus']).value,
+      categories: this.selection.selected
+    };
+    this.competitionService.updateCompetition(competition).subscribe((newCompetition) => {
+      console.log(newCompetition);
+    });
   }
 }
